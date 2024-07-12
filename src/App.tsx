@@ -1,7 +1,9 @@
+import Toolbar from "./components/Toolbar";
+
 function App() {
   return (
     <>
-      <h1>Hi</h1>
+      <Toolbar />
     </>
   );
 }
