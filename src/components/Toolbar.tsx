@@ -1,9 +1,14 @@
-import { ToolbarContainer } from "../styled-components/ToolbarContainer";
+import { ToolbarContainer } from "../styled-components/toolbar/ToolbarContainer";
+import { AddButton } from "../styled-components/toolbar/S.Button";
+
 function Toolbar() {
+  function handleClick() {
+    console.log("Clicked");
+  }
   return (
     <>
       <ToolbarContainer>
-        <h2 style={{ fontWeight: "200" }}>Add</h2>
+        <AddButton onClick={handleClick}>new</AddButton>
       </ToolbarContainer>
     </>
   );
