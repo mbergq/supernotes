@@ -23,6 +23,11 @@ function Toolbar() {
           <p key={n.id}>{n.id}</p>
         ))}
       </ToolbarContainer>
+      <div>
+        <h2>Content</h2>
+        <h2>Content</h2>
+        <h2>Content</h2>
+      </div>
     </>
   );
 }
