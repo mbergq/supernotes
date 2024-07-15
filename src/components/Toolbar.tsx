@@ -1,3 +1,4 @@
+import Notes from "./Notes";
 import { ToolbarContainer } from "../styled-components/toolbar/ToolbarContainer";
 import { AddButton } from "../styled-components/toolbar/S.Button";
 import { useState } from "react";
@@ -6,11 +7,12 @@ interface NoteValues {
   id: number;
   content: string;
 }
-interface Values extends Array<NoteValues> {}
+// interface Values extends Array<NoteValues> {}
 
 let nextId = 0;
 function Toolbar() {
-  const [note, setNote] = useState<Values>([]);
+  //use [] after interface name instead of extend function
+  const [note, setNote] = useState<NoteValues[]>([]);
   function handleClick() {
     setNote([...note, { id: nextId++, content: "Hi" }]);
     console.log("Clicked");
@@ -23,11 +25,7 @@ function Toolbar() {
           <p key={n.id}>{n.id}</p>
         ))}
       </ToolbarContainer>
-      <div>
-        <h2>Content</h2>
-        <h2>Content</h2>
-        <h2>Content</h2>
-      </div>
+      <Notes notes={note} />
     </>
   );
 }
