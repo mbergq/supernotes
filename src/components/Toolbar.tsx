@@ -71,7 +71,15 @@ function Toolbar() {
                 {noteBGColors.map((color) => {
                   return (
                     <label key={color} style={{ backgroundColor: color }}>
-                      <Field type="radio" name="color" value={color} />
+                      <Field
+                        type="radio"
+                        name="color"
+                        value={color}
+                        style={{
+                          appearance: "none",
+                          width: "15px",
+                        }}
+                      />
                     </label>
                   );
                 })}
