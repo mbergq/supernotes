@@ -31,8 +31,8 @@ const TextInput = ({
 };
 
 // interface Values extends Array<NoteValues> {}
-
 let nextId = 0;
+const noteBGColors = ["#d6ffe9", "#bbc2e2", "#de6c83", "#7b72ac", "#fbd589"];
 function Toolbar() {
   //use [] after interface name instead of extend function
   const [note, setNote] = useState<NoteValues[]>([]);
@@ -68,22 +68,13 @@ function Toolbar() {
               <TextInput label="" name="content" type="text" />
               <div id="radio-buttons">Color</div>
               <div role="group" aria-labelledby="radio-buttons">
-                <label>
-                  <Field type="radio" name="color" value="nice-blue" />
-                  nice-blue
-                </label>
-                <label>
-                  <Field type="radio" name="color" value="coral-red" />
-                  coral-red
-                </label>
-                <label>
-                  <Field type="radio" name="color" value="cola" />
-                  cola
-                </label>
-                <label>
-                  <Field type="radio" name="color" value="magenta" />
-                  magenta
-                </label>
+                {noteBGColors.map((color) => {
+                  return (
+                    <label key={color} style={{ backgroundColor: color }}>
+                      <Field type="radio" name="color" value={color} />
+                    </label>
+                  );
+                })}
                 <div>{values.color}</div>
                 <button type="submit">add</button>
               </div>
