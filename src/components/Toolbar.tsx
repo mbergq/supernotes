@@ -1,6 +1,7 @@
 import Notes from "./Notes";
 import { ToolbarContainer } from "../styled-components/toolbar/ToolbarContainer";
-import { AddButton } from "../styled-components/toolbar/S.Button";
+import { NewButton } from "../styled-components/toolbar/NewButton";
+import { StyledInput } from "../styled-components/toolbar/StyledInput";
 import { useState } from "react";
 
 import { Formik, Form, Field, useField } from "formik";
@@ -22,7 +23,7 @@ const TextInput = ({
   return (
     <>
       <label htmlFor={props.id || props.name}>{label}</label>
-      <input className="text-input" {...field} {...props} />
+      <StyledInput className="text-input" {...field} {...props} />
       {meta.touched && meta.error ? (
         <div className="error">{meta.error}</div>
       ) : null}
@@ -43,7 +44,7 @@ function Toolbar() {
   return (
     <>
       <ToolbarContainer>
-        <AddButton onClick={handleClick}>new</AddButton>
+        <NewButton onClick={handleClick}>new</NewButton>
         {note.map((n) => (
           <p key={n.id}>{n.id}</p>
         ))}
@@ -65,8 +66,7 @@ function Toolbar() {
         >
           {({ values }) => (
             <Form>
-              <TextInput label="" name="content" type="text" />
-              <div id="radio-buttons">Color</div>
+              <div id="radio-buttons">color</div>
               <div role="group" aria-labelledby="radio-buttons">
                 {noteBGColors.map((color) => {
                   return (
@@ -83,6 +83,7 @@ function Toolbar() {
                     </label>
                   );
                 })}
+                <TextInput label="" name="content" type="text" />
                 <div>{values.color}</div>
                 <button type="submit">add</button>
               </div>
