@@ -12,17 +12,18 @@ interface NoteValues {
   content: string;
 }
 
-const TextInput = ({
-  label,
-  ...props
-}: {
-  [x: string]: string;
+interface TextInputProps {
+  [x: string]: string | object;
   name: string;
-}) => {
+  style: { backgroundColor: string };
+}
+
+const TextInput = ({ ...props }: TextInputProps) => {
   const [field, meta] = useField(props);
   return (
     <>
-      <label htmlFor={props.id || props.name}>{label}</label>
+      {/* commented out since i probably won't need this */}
+      {/* <label htmlFor={props.id || props.name}>{label}</label> */}
       <StyledInput className="text-input" {...field} {...props} />
       {meta.touched && meta.error ? (
         <div className="error">{meta.error}</div>
@@ -83,7 +84,11 @@ function Toolbar() {
                     </label>
                   );
                 })}
-                <TextInput label="" name="content" type="text" />
+                <TextInput
+                  name="content"
+                  type="text"
+                  style={{ backgroundColor: values.color }}
+                />
                 <div>{values.color}</div>
                 <button type="submit">add</button>
               </div>
