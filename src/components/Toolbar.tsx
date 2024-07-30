@@ -22,8 +22,6 @@ const TextInput = ({ ...props }: TextInputProps) => {
   const [field, meta] = useField(props);
   return (
     <>
-      {/* commented out since i probably won't need this */}
-      {/* <label htmlFor={props.id || props.name}>{label}</label> */}
       <StyledInput className="text-input" {...field} {...props} />
       {meta.touched && meta.error ? (
         <div className="error">{meta.error}</div>
@@ -32,26 +30,17 @@ const TextInput = ({ ...props }: TextInputProps) => {
   );
 };
 
-// interface Values extends Array<NoteValues> {}
 let nextId = 0;
 const noteBGColors = ["#d6ffe9", "#bbc2e2", "#de6c83", "#7b72ac", "#fbd589"];
 function Toolbar() {
-  //use [] after interface name instead of extend function
   const [note, setNote] = useState<NoteValues[]>([]);
   function handleClick() {
-    // setNote([...note, { id: nextId++, content: "Hi" }]);
-    // console.log("Clicked");
+    // trigger new note functionality here
   }
   return (
     <>
       <ToolbarContainer>
         <NewButton onClick={handleClick}>new</NewButton>
-        {note.map((n) => (
-          <p key={n.id}>
-            {n.id}
-            {n.values.content}
-          </p>
-        ))}
         <Formik
           initialValues={{
             content: "",
@@ -64,8 +53,6 @@ function Toolbar() {
             // .required("Required"),
           })}
           onSubmit={(values, { setSubmitting }) => {
-            // console.log(values, null, 2);
-            console.log(values);
             setNote([...note, { id: nextId++, values }]);
             setSubmitting(false);
           }}
@@ -94,7 +81,6 @@ function Toolbar() {
                   type="text"
                   style={{ backgroundColor: values.color }}
                 />
-                <div>{values.color}</div>
                 <button type="submit">add</button>
               </div>
             </Form>
