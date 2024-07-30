@@ -9,7 +9,7 @@ import * as Yup from "yup";
 
 interface NoteValues {
   id: number;
-  content: string;
+  values: { content: string; color: string };
 }
 
 interface TextInputProps {
@@ -39,15 +39,18 @@ function Toolbar() {
   //use [] after interface name instead of extend function
   const [note, setNote] = useState<NoteValues[]>([]);
   function handleClick() {
-    setNote([...note, { id: nextId++, content: "Hi" }]);
-    console.log("Clicked");
+    // setNote([...note, { id: nextId++, content: "Hi" }]);
+    // console.log("Clicked");
   }
   return (
     <>
       <ToolbarContainer>
         <NewButton onClick={handleClick}>new</NewButton>
         {note.map((n) => (
-          <p key={n.id}>{n.id}</p>
+          <p key={n.id}>
+            {n.id}
+            {n.values.content}
+          </p>
         ))}
         <Formik
           initialValues={{
@@ -61,7 +64,9 @@ function Toolbar() {
             // .required("Required"),
           })}
           onSubmit={(values, { setSubmitting }) => {
-            console.log(JSON.stringify(values, null, 2));
+            // console.log(values, null, 2);
+            console.log(values);
+            setNote([...note, { id: nextId++, values }]);
             setSubmitting(false);
           }}
         >

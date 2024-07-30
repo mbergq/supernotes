@@ -1,6 +1,6 @@
 interface Values {
   id: number;
-  content: string;
+  values: { content: string; color: string };
 }
 
 interface Props {
@@ -13,7 +13,7 @@ function Notes({ notes }: Props) {
     <>
       <h2>Hi</h2>
       {notes.length !== 0 &&
-        notes.map((note) => <div key={note.id}>{note.content}</div>)}
+        notes.map((note) => <div key={note.id}>{note.values.content}</div>)}
     </>
   );
 }
