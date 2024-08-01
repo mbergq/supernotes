@@ -1,4 +1,4 @@
-import { NoteFrame } from "../styled-components/notes/NoteFrame";
+import Note from "./Note";
 
 interface Values {
   id: number;
@@ -14,11 +14,7 @@ function Notes({ notes }: Props) {
   return (
     <>
       {notes.length !== 0 &&
-        notes.map((note) => (
-          <NoteFrame key={note.id} $inputBGColor={note.values.color}>
-            {note.values.content}
-          </NoteFrame>
-        ))}
+        notes.map((n) => <Note key={n.id} data={n.values} />)}
     </>
   );
 }
