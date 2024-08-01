@@ -15,7 +15,7 @@ function Notes({ notes }: Props) {
     <>
       {notes.length !== 0 &&
         notes.map((note) => (
-          <NoteFrame key={note.id} inputBGColor={note.values.color}>
+          <NoteFrame key={note.id} $inputBGColor={note.values.color}>
             {note.values.content}
           </NoteFrame>
         ))}
