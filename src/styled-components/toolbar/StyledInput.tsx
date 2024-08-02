@@ -3,10 +3,9 @@ import styled from "styled-components";
 export const StyledInput = styled.textarea`
   width: 252px;
   height: 272px;
-  /* padding: 12px 20px; */
-  margin-top: 20px;
-  margin-bottom: 20px;
-  box-sizing: border-box;
+  padding: 12px 20px;
+  /* margin-top: 20px; */
+  /* margin-bottom: 20px; */
   border: 2px solid #ccc;
   border-radius: 4px;
   background-color: #f8f8f8;
@@ -14,9 +13,8 @@ export const StyledInput = styled.textarea`
   border: none;
   overflow: auto;
   outline: none;
-  /* not sure if needed */
-  /* -webkit-box-shadow: none;
+  -webkit-box-shadow: none;
   -moz-box-shadow: none;
-  box-shadow: none; */
+  box-shadow: none;
   resize: none;
 `;
