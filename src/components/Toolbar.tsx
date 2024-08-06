@@ -81,7 +81,9 @@ function Toolbar() {
                   type="text"
                   style={{ backgroundColor: values.color }}
                 />
-                <button type="submit">add</button>
+                <button type="submit" disabled={values.content === ""}>
+                  add
+                </button>
               </div>
             </Form>
           )}
