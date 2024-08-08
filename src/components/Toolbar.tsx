@@ -53,7 +53,16 @@ function Toolbar() {
             // .required("Required"),
           })}
           onSubmit={(values, { setSubmitting }) => {
-            setNote([...note, { id: nextId++, values }]);
+            const currentTextInput = values.content;
+            function addNote() {
+              const result = note.find(
+                ({ values }) => currentTextInput === values.content
+              );
+              if (result !== undefined) {
+                console.log("Note already exists");
+              } else setNote([...note, { id: nextId++, values }]);
+            }
+            addNote();
             setSubmitting(false);
           }}
         >
